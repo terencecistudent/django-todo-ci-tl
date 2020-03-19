@@ -16,6 +16,8 @@ if os.path.exists("env.py"):
     import env
 
 
+development = os.getenv('DEVELOPMENT')
+
 if os.getenv('DEVELOPMENT'):
     development = True
 else:
