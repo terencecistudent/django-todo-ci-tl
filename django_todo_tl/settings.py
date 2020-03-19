@@ -15,6 +15,7 @@ import dj_database_url
 if os.path.exists("env.py"):
     import env
 
+
 if os.getenv('DEVELOPMENT'):
     development = True
 else:
