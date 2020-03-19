@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
+# import env
 
-if os.environ.get('DEVELOPMENT'):
+if os.getenv('DEVELOPMENT'):
     development = True
 else:
     development = False
@@ -27,12 +28,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'u9+^*&v=thh+lx2(s9sma5)kvpd*q&zs87$-cw&h#co@-2e)l7'
+SECRET_KEY = os.getenv('SECRET_KEY', "Env value not loaded")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = development
 
-ALLOWED_HOSTS = ["localhost", os.environ.get("HOSTNAME")]
+ALLOWED_HOSTS = ["localhost", os.getenv("HOSTNAME")]
 
 
 # Application definition
@@ -89,7 +90,7 @@ if development:
         }
     }
 else:
-    DATABASES = {"default": dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+    DATABASES = {"default": dj_database_url.parse(os.getenv("DATABASE_URL"))}
 
 
 # Password validation
